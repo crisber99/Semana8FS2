@@ -1,0 +1,62 @@
+<div class="formulario-registro">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form [formGroup]="formularioRegistro" (ngSubmit)="registrar()">
+          <h2>Registro</h2>
+          <div class="mb-3">
+            <label for="nombreUsuario" class="form-label">Nombre de usuario</label>
+            <input type="text" id="nombreUsuario" class="form-control" formControlName="nombreUsuario">
+            <div *ngIf="formularioRegistro.get('nombreUsuario').invalid && (formularioRegistro.get('nombreUsuario').dirty || formularioRegistro.get('nombreUsuario').touched)">
+              <p class="text-danger" *ngIf="formularioRegistro.get('nombreUsuario').errors.required">Debe ingresar un nombre de usuario</p>
+              <p class="text-danger" *ngIf="formularioRegistro.get('nombreUsuario').errors.minlength">El nombre de usuario debe tener al menos 3 caracteres</p>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="mail" class="form-label">Correo electrónico</label>
+            <input type="email" id="mail" class="form-control" formControlName="mail">
+            <div *ngIf="formularioRegistro.get('mail').invalid && (formularioRegistro.get('mail').dirty || formularioRegistro.get('mail').touched)">
+              <p class="text-danger" *ngIf="formularioRegistro.get('mail').errors.required">Debe ingresar un correo electrónico</p>
+  <p class="text-danger" *ngIf="formularioRegistro.get('mail').errors.email">El correo electrónico no es válido</p>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" id="password" class="form-control" formControlName="password">
+            <div *ngIf="formularioRegistro.get('password').invalid && (formularioRegistro.get('password').dirty || formularioRegistro.get('password').touched)">
+              <p class="text-danger" *ngIf="formularioRegistro.get('password').errors.required">Debe ingresar una contraseña</p>
+              <p class="text-danger" *ngIf="formularioRegistro.get('password').errors.minlength">La contraseña debe tener al menos 6 caracteres</p>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="repetirPassword" class="form-label">Repetir contraseña</label>
+            <input type="password" id="repetirPassword" class="form-control" formControlName="repetirPassword">
+            <div *ngIf="formularioRegistro.get('repetirPassword').invalid && (formularioRegistro.get('repetirPassword').dirty || formularioRegistro.get('repetirPassword').touched)">
+              <p class="text-danger" *ngIf="formularioRegistro.get('repetirPassword').errors.required">Debe repetir la contraseña</p>
+              <p class="text-danger" *ngIf="formularioRegistro.get('repetirPassword').errors.mustMatch">Las contraseñas no coinciden</p>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="fechaNacimiento" class="form-label">Fecha de nacimiento</label>
+            <input type="date" formControlName="fechaNacimiento" (change)="validarEdad()" maxlength="10">
+            <div *ngIf="formularioRegistro.get('fechaNacimiento').invalid && (formularioRegistro.get('fechaNacimiento').dirty || formularioRegistro.get('fechaNacimiento').touched)">
+              <p class="text-danger" *ngIf="formularioRegistro.get('fechaNacimiento').errors.required">Debe ingresar una fecha de nacimiento</p>
+            </div>
+            <div *ngIf="!edadValida">
+              <p class="text-danger">La persona es menor de 13 años</p>
+            </div>
+          </div>
+<div class="d-flex justify-content-center" style="flex-direction: column;">
+  <button type="submit" class="btn btn-primary" [disabled]="!formularioRegistro.valid">Registrar</button>
+  <p class="text-center text-muted">Ya tienes una cuenta? <a [routerLink]="['/login']"
+    class="fw-bold text-body"><u>Inicia Sesión</u></a></p>
+              </div>
+
+              
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

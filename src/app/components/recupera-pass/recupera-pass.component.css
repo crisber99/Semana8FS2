@@ -1,0 +1,29 @@
+.formulario-rpass {
+    position: relative;
+    z-index: 0;
+    max-width: 350px;
+    max-height: 350px;
+    margin: 0px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .formulario-rpass {
+        margin: 20px 20px;
+    }
+    }
+     
+    @media (max-width: 480px) {
+    .formulario-rpass {
+        margin: 20px 20px;
+    }
+    }
+     
+    @media (max-width: 320px) {
+    .formulario-rpass {
+    padding: 5px;
+    }
+    }
