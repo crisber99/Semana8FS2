@@ -14,6 +14,8 @@ import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { PiePaginaComponent } from './components/pie-pagina/pie-pagina.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule

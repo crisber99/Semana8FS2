@@ -28,19 +28,19 @@ interface RegistroUsuario {
   perfil: string;
 }
 
-interface RegistroPerfil {
-  perfilCod: number;
-  perfilName: string;
-}
+// interface RegistroPerfil {
+//   perfilCod: number;
+//   perfilName: string;
+// }
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistroService {
   private usuarios: RegistroUsuario[] = [];
-  public perfiles: RegistroPerfil[] = [{ perfilName: 'Admin', perfilCod: 1 },
-  { perfilName: 'Visita', perfilCod: 2 },
-  { perfilName: 'Moderador', perfilCod: 3 }];
+  // public perfiles: RegistroPerfil[] = [{ perfilName: 'Admin', perfilCod: 1 },
+  // { perfilName: 'Visita', perfilCod: 2 },
+  // { perfilName: 'Moderador', perfilCod: 3 }];
 
 
   constructor() {
@@ -85,26 +85,28 @@ export class RegistroService {
    * @param perfilName -nombre del perfil que se grabara
    * @returns retorna true si graba con exito de lo contrario un false
    */
-  registrarPerfil(perfilName: string): boolean {
-    console.log('Intentando registrar perfil:', { perfilName });
-    const perfilExistente = this.perfiles.find(per => per.perfilName === perfilName);
-    if (perfilExistente) {
-      this.mostrarAlerta('El perfil ya existe.', 'danger');
-      console.log('El perfil ya existe.');
-      return false;
-    }
+  // registrarPerfil(perfilName: string): boolean {
+  //   console.log('Intentando registrar perfil:', { perfilName });
+  //   const perfilExistente = this.perfiles.find(per => per. === perfilName);
+  //   if (perfilExistente) {
+  //     this.mostrarAlerta('El perfil ya existe.', 'danger');
+  //     console.log('El perfil ya existe.');
+  //     return false;
+  //   }
 
-    let perfilCod = this.perfiles.length +1;
+  //   let perfilCod = this.perfiles.length +1;
 
-    const nuevoPerfil: RegistroPerfil = { perfilCod, perfilName };
-    this.perfiles.push(nuevoPerfil);
-    if (this.isLocalStorageAvailable()) {
-      localStorage.setItem('perfiles', JSON.stringify(this.perfiles));
-    }
-    this.mostrarAlerta('RegistroPerfil registrado exitosamente.', 'success');
-    console.log('RegistroPerfil registrado exitosamente:', nuevoPerfil);
-    return true;
-  }
+  //   const nuevoPerfil: RegistroPerfil = { perfilCod, perfilName };
+  //   this.perfiles.push(nuevoPerfil);
+  //   if (this.isLocalStorageAvailable()) {
+  //     localStorage.setItem('perfiles', JSON.stringify(this.perfiles));
+  //   }
+  //   this.mostrarAlerta('RegistroPerfil registrado exitosamente.', 'success');
+  //   console.log('RegistroPerfil registrado exitosamente:', nuevoPerfil);
+  //   return true;
+  // }
+
+  
 
   /**
    * 

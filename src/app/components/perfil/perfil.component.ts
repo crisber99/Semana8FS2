@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { Renderer2, ElementRef } from '@angular/core';
-import { RegistroService } from 'src/app/Service/Registro.service';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { JsonService } from 'src/app/Service/json.service';
+
 
 /**
  * @description
@@ -21,23 +21,29 @@ import { RegistroService } from 'src/app/Service/Registro.service';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  styleUrls: ['./perfil.component.css'],
+  providers: [JsonService]
 })
 export class PerfilComponent implements OnInit {
   formularioPerfil: FormGroup;
-  resultado:boolean;
-  
+  resultado: boolean;
+
   constructor(
-    private servicioReg: RegistroService
+    private jsonPerfiles: JsonService
   ) { }
 
-  Perfiles = this.servicioReg.perfiles;
+  Perfiles: any[] = [];
+  perfilName: string = '';
 
   ngOnInit(): void {
+    this.jsonPerfiles.getJsonPerfiles().subscribe(data => {
+      this.Perfiles = data;
+    });
+
     this.formularioPerfil = new FormGroup({
       nombrePerfil: new FormControl('', [Validators.required, this.ValidaCampo])
     });
-  } 
+  }
 
   ValidaCampo(control: AbstractControl): { [key: string]: boolean } | null {
     const name = control.value;
@@ -58,23 +64,15 @@ export class PerfilComponent implements OnInit {
     return null;
   }
 
-  registrar() {
-    if (this.formularioPerfil.valid) {
-      const per = {
-        perfil: this.formularioPerfil.get('nombrePerfil').value
-      };
-      console.log(per);
+  registrar(): void {
+    const newPerfil = {
+      perfilCod: this.Perfiles.length > 0 ? Math.max(...this.Perfiles.map((p: any) => p.perfilCod)) + 1 : 1,
+      perfilName: this.formularioPerfil.get('nombrePerfil').value
+    };
+    this.Perfiles.push(newPerfil);
+    this.jsonPerfiles.registrarPerfil(this.Perfiles);
 
-      const registroExitoso = this.servicioReg.registrarPerfil(per.perfil);
-          if (registroExitoso) {
-            console.log('Registro exitoso:', { per });
-            
-          } else {
-            console.log('Error en el registro.');
-          }
-          this.resultado = registroExitoso;
-          this.formularioPerfil.reset();
-    }
+    this.formularioPerfil.reset();
   }
 
 }

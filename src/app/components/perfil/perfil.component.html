@@ -30,22 +30,26 @@
                     </div>
 
                     <div class="d-flex justify-content-center" style="flex-direction: column;">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Código</th>
-                                    <th scope="col">Nombre Perfil</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let perfil of Perfiles">
-                                    <th scope="row">{{perfil.perfilCod}}</th>
-                                    <td>{{perfil.perfilName}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div *ngIf="Perfiles && Perfiles.length > 0; else noData">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Código</th>
+                                        <th scope="col">Nombre Perfil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let perfil of Perfiles">
+                                        <th scope="row">{{perfil.perfilCod}}</th>
+                                        <td>{{perfil.perfilName}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-
+                    <ng-template #noData>
+                        <p>No hay datos disponibles</p>
+                    </ng-template>
                 </form>
             </div>
         </div>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { Renderer2, ElementRef } from '@angular/core';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { RegistroService } from 'src/app/Service/Registro.service';
 
 /**
@@ -30,11 +29,9 @@ export class RegistroComponent implements OnInit {
   StrongPasswordRegx: RegExp =
   /^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$/;
 
-  perfiles = this.servicioReg.perfiles;
+ 
   constructor(
-    private servicioReg: RegistroService,
-    private el: ElementRef,
-    private fb: FormBuilder
+    private servicioReg: RegistroService
   ) { 
   }
 
@@ -168,7 +165,7 @@ export class RegistroComponent implements OnInit {
       console.log(usuario);
 
       const registroExitoso = this.servicioReg.registrarUsuario(usuario.mail, usuario.password, 
-        usuario.nombreUsuario, usuario.fechaNacimiento, usuario.perfil.name);
+        usuario.nombreUsuario, usuario.fechaNacimiento, usuario.perfil.perfilName);
           if (registroExitoso) {
             console.log('Registro exitoso:', { usuario });
             
