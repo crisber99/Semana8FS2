@@ -8,9 +8,9 @@ describe('RegistroComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegistroComponent ]
+      declarations: [RegistroComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(RegistroComponent);
     component = fixture.componentInstance;
@@ -21,8 +21,26 @@ describe('RegistroComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('prueba 1: usuario registrado', () => {
-    component.formularioRegistro.setValue({mail: "mail@mail.com", pass: "123456", userName: "user", fechaNacimiento:"25/03/1986"});
+  it('prueba 1: usuario registrado con error', () => {
+    component.formularioRegistro.setValue({
+      mail: "mail9@mail.com",
+      pass: "123456",
+      userName: "user9",
+      fechaNacimiento: "25/03/1986",
+      perfil: 'Visita'
+    });
+    component.registrar();
+    expect(component.resultado).toBe(false);
+  });
+
+  it('prueba 2: usuario registrado exitoso', () => {
+    component.formularioRegistro.setValue({
+      mail: "mail10@mail.com",
+      pass: "Panta11a$",
+      userName: "userDiez",
+      fechaNacimiento: "25/03/1986",
+      perfil: 'Visita'
+    });
     component.registrar();
     expect(component.resultado).toBe(true);
   });

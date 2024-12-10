@@ -3,6 +3,17 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistroService } from 'src/app/Service/Registro.service';
 
+/**
+ * @description
+ * Componente que valida si existe el usuario y le facilite la entrega de su password.
+ */
+/**
+ * @usageNotes
+ * 
+ * el metodo 'recuperar' recupera la contraseña del usuario.
+ * 
+ */
+
 @Component({
   selector: 'app-recupera-pass',
   templateUrl: './recupera-pass.component.html',
@@ -17,7 +28,7 @@ export class RecuperaPassComponent implements OnInit {
 
   ngOnInit(): void {
     this.formularioRpass = new FormGroup({
-      mail: new FormControl('', [Validators.required, Validators.email])
+      mail: new FormControl('', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])
     });
   }
 

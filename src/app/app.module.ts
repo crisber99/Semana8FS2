@@ -14,6 +14,7 @@ import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { PiePaginaComponent } from './components/pie-pagina/pie-pagina.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
+import { PruebaComponent } from './components/prueba/prueba.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PerfilComponent } from './components/perfil/perfil.component';
     CatalogoComponent,
     PiePaginaComponent,
     RegistroComponent,
-    PerfilComponent
+    PerfilComponent,
+    PruebaComponent
   ],
   imports: [
     BrowserModule,

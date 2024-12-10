@@ -1,0 +1,60 @@
+<div class="formulario-registro">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form [formGroup]="formularioRegistro" (ngSubmit)="registrar()">
+                    <h2>Prueba</h2>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" id="password" class="form-control" formControlName="password">
+                        <div style="font-size: x-small; color: red;"
+                            *ngIf="formularioRegistro.get('password').invalid && (formularioRegistro.get('password').dirty || formularioRegistro.get('password').touched)">
+                            <p class="text-danger"
+                                *ngIf="formularioRegistro.get('password').hasError('invalidMayuscula')">Debe
+                                contener al menos una letra mayúscula.</p>
+                            <p class="text-danger" *ngIf="formularioRegistro.get('password').hasError('invalidMin')">
+                                Debe
+                                contener al menos una letra minúscula.</p>
+                            <p class="text-danger" *ngIf="formularioRegistro.get('password').hasError('invalidNum')">
+                                Debe
+                                contener al menos un número.</p>
+                            <p class="text-danger" *ngIf="formularioRegistro.get('password').hasError('invalidCaracter')">
+                                Debe
+                                contener al menos un carácter especial (por ejemplo, !, #, $).</p>
+                            <p class="text-danger" *ngIf="formularioRegistro.get('password').hasError('invalidLength')">
+                                Debe tener una
+                                longitud mínima, al menos 8 caracteres.</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="repetirPassword" class="form-label">Repetir contraseña</label>
+                        <input type="password" id="repetirPassword" class="form-control"
+                            formControlName="repetirPassword">
+                        <div
+                            *ngIf="formularioRegistro.get('repetirPassword').invalid && (formularioRegistro.get('repetirPassword').dirty || formularioRegistro.get('repetirPassword').touched)">
+                            <p class="text-danger" *ngIf="formularioRegistro.get('repetirPassword').errors.required">
+                                Debe repetir la
+                                contraseña</p>
+                            <div *ngIf="!passRepit">
+                                <p class="text-danger">Las contraseñas deben coincidir.</p>
+                            </div>
+                            <!-- <span class="block" *ngIf="!passRepit"
+                                [ngClass]="{'text-success': passRepit?.valueOf}">Las contraseñas deben coincidir.</span> -->
+                            <!-- <p class="text-danger" *ngIf="formularioRegistro.get('repetirPassword').errors.mustMatch">
+                                Las contraseñas
+                                no coinciden</p> -->
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center" style="flex-direction: column;">
+                        <button type="submit" class="btn btn-primary"
+                            [disabled]="!formularioRegistro.valid">Registrar</button>
+                        <p class="text-center text-muted">Ya tienes una cuenta? <a [routerLink]="['/login']"
+                                class="fw-bold text-body"><u>Inicia Sesión</u></a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

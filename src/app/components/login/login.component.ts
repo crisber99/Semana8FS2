@@ -4,6 +4,18 @@ import { Router } from '@angular/router';
 import { RegistroService } from 'src/app/Service/Registro.service';
 import { Renderer2, ElementRef } from '@angular/core';
 
+/**
+ * @description
+ * Componente que valida el ingreso de los usuarios.
+ */
+/**
+ * @usageNotes
+ * 
+ * el metodo 'ingresar' valida que el usuario este creado.
+ * el metodo 'recuperarContrasena' redirecciona al componente RecuperaPassComponent
+ * 
+ */
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,8 +34,8 @@ export class LoginComponent implements OnInit {
  
   ngOnInit(): void {
     this.formularioLogin = new FormGroup({
-      userName: new FormControl('', [Validators.required]),
-      contrasena: new FormControl('', [Validators.required, Validators.minLength(6)])
+      userName: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      contrasena: new FormControl('', [Validators.required, Validators.minLength(8)])
     });
   }
  

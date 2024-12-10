@@ -5,7 +5,9 @@
           <label for="userName">Usuario:</label>
           <input type="text" formControlName="userName" id="userName" placeholder="Usuario">
           <div *ngIf="formularioLogin.get('userName').invalid && (formularioLogin.get('userName').dirty || formularioLogin.get('userName').touched)">
-            <p *ngIf="formularioLogin.get('userName').errors.required">Debe ingresar su Usuario</p>
+            <p class="text-danger" *ngIf="formularioLogin.get('userName').errors.required">Debe ingresar su Usuario</p>
+            <p class="text-danger" *ngIf="formularioLogin.get('userName').errors.minlength">El nombre de
+              usuario debe tener al menos 6 caracteres</p>
           </div>
         </div>
         <div class="form-group">
@@ -13,7 +15,7 @@
           <input type="password" formControlName="contrasena" id="contrasena" placeholder="Ingrese su contraseña">
           <div *ngIf="formularioLogin.get('contrasena').invalid && (formularioLogin.get('contrasena').dirty || formularioLogin.get('contrasena').touched)">
             <p *ngIf="formularioLogin.get('contrasena').errors.required">Debe ingresar su contraseña</p>
-            <p *ngIf="formularioLogin.get('contrasena').errors.minlength">Contraseña de largo minímo 6</p>
+            <p *ngIf="formularioLogin.get('contrasena').errors.minlength">Contraseña de largo minímo 8</p>
           </div>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">

@@ -24,7 +24,11 @@
       "es2020",
       "dom"
     ],
-    "types": ["node"]
+    // "types": [
+    //   "node",
+    //   "@wdio/sync",
+    //   "@wdio/mocha-framework"
+    // ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
