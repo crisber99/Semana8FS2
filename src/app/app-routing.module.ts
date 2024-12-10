@@ -7,7 +7,6 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { RecuperaPassComponent } from './components/recupera-pass/recupera-pass.component'; 
 import { RegistroComponent } from './components/registro/registro.component';
-import { PruebaComponent } from './components/prueba/prueba.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 
 
@@ -19,7 +18,6 @@ const routes: Routes = [
   {path:'quienes-somos', component:QuienesSomosComponent},
   {path:'recuperar-pass', component:RecuperaPassComponent},
   {path:'registro', component:RegistroComponent},
-  {path:'prueba', component:PruebaComponent},
   {path:'perfil', component:PerfilComponent}
 ];
 
