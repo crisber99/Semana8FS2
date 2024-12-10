@@ -20,7 +20,11 @@ export class MenuComponent {
   isChecked = false;
 
   getPerfil(){
-    if(sessionStorage.getItem('perfil').toUpperCase() == 'ADMIN') return true; else return false;
+    if(sessionStorage.getItem('perfil') != null){
+      if(sessionStorage.getItem('perfil').toUpperCase() == 'ADMIN') return true; else return false;
+    }
+    else return false;
+    
   }
 
 }
